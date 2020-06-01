@@ -19,3 +19,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.comment label {
+  font-weight: 600;
+}
+
+.comments-reply {
+  padding-left: 50px;
+}
+
+.comments-reply-reply {
+  padding-left: 100px;
+}
