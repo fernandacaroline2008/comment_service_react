@@ -83,17 +83,15 @@ export default function SignIn() {
 						control={<Checkbox value="remember" color="primary"/>}
 						label="Remember me"
 					/>
-					<Link to="/comment">
-						<Button
-							type="submit"
-							fullWidth
-							variant="contained"
-							color="primary"
-							className={classes.submit}
-						>
-							Log In
-						</Button>
-					</Link>
+					<Button
+						type="submit"
+						fullWidth
+						variant="contained"
+						color="primary"
+						className={classes.submit}
+					>
+						Log In
+					</Button>
 				</form>
 			</div>
 			<Box mt={8}>

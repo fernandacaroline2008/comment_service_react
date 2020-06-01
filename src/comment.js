@@ -1,12 +1,27 @@
 import React from 'react';
 import './index.css';
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 
 function CommentRow(props) {
 	return (
 		<div className="comment">
-			<label>{props.comment.user.name}</label>
-			<span>{props.comment.text}</span>
+			<TextField
+				variant="outlined"
+				required
+				fullWidth
+				id="text"
+				label={props.comment.user.name}
+				name="text"
+				value={props.comment.text}
+			/>
+			<div className="comments-reply">
+				{props.comment.replies.map(reply => (
+						<CommentRow comment={reply}/>
+				))}
+			</div>
 		</div>
 	);
 }
@@ -27,14 +42,12 @@ class Comments extends React.Component {
 			.then(res => res.json())
 			.then(
 				(result) => {
-					console.log(result)
 					this.setState({
 						isLoaded: true,
 						comments: result.comments
 					});
 				},
 				(error) => {
-					console.log(error)
 					this.setState({
 						isLoaded: true,
 						error
@@ -51,28 +64,16 @@ class Comments extends React.Component {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<div id="comments">
-					{comments.map(comment => (
-						<div>
+				<Container component="main" maxWidth="xl">
+					<Typography component="h1" variant="h5">
+						Recent Posts
+					</Typography>
+					<div id="comments">
+						{comments.map(comment => (
 							<CommentRow comment={comment}/>
-
-							<div className="comments-reply">
-								{comment.replies.map(reply => (
-									<div>
-										<CommentRow comment={reply}/>
-
-										<div className="comments-reply-reply">
-											{reply.replies.map(reply2 => (
-												<CommentRow comment={reply2}/>
-											))}
-										</div>
-									</div>
-								))}
-
-							</div>
-						</div>
-					))}
-				</div>
+						))}
+					</div>
+				</Container>
 			);
 		}
 	}
