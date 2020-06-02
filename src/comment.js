@@ -6,14 +6,21 @@ import Container from "@material-ui/core/Container";
 import CreateComment from "./createComment";
 
 function CommentRow(props) {
+	let title = props.comment.user.name
+	if (props.comment.city) {
+		title = title.concat(' - ',props.comment.city)
+	}
+	if (props.comment.temperature) {
+		title = title.concat(' ',props.comment.temperature, '°C')
+	}
+
 	return (
 		<div className="comment">
 			<TextField
 				variant="outlined"
-				required
 				fullWidth
 				id="text"
-				label={props.comment.user.name}
+				label={title}
 				name="text"
 				value={props.comment.text}
 			/>
