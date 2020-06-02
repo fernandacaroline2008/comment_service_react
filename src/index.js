@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SignIn from './login'
-import Comments from "./comment";
-import CreateComment from "./createComment";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import LogIn from "./login";
+import CommentPage from "./comment";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<SignIn/>
-		<CreateComment/>
-		<Comments />
+		<Router>
+			<Route exact path="/" component={LogIn}/>
+			<Route path="/comment" component={CommentPage}/>
+		</Router>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

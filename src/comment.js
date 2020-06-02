@@ -3,7 +3,7 @@ import './index.css';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-
+import CreateComment from "./createComment";
 
 function CommentRow(props) {
 	return (
@@ -19,7 +19,7 @@ function CommentRow(props) {
 			/>
 			<div className="comments-reply">
 				{props.comment.replies.map(reply => (
-						<CommentRow comment={reply}/>
+					<CommentRow comment={reply}/>
 				))}
 			</div>
 		</div>
@@ -64,11 +64,11 @@ class Comments extends React.Component {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<Container component="main" maxWidth="xl">
+				<Container component="main" maxWidth="xl" className="comments">
 					<Typography component="h1" variant="h5">
 						Recent Posts
 					</Typography>
-					<div id="comments">
+					<div>
 						{comments.map(comment => (
 							<CommentRow comment={comment}/>
 						))}
@@ -79,4 +79,12 @@ class Comments extends React.Component {
 	}
 }
 
-export default Comments;
+function CommentPage() {
+	return (
+		<Container component="main" maxWidth="xl">
+			<CreateComment/>
+			<Comments/>
+		</Container>);
+}
+
+export default CommentPage;

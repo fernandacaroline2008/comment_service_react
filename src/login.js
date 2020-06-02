@@ -10,6 +10,11 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Comments from "./comment";
+import {  Route,
+	NavLink,
+	BrowserRouter as Router,
+	Switch} from "react-router-dom";
 
 function Copyright() {
 	return (
@@ -44,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignIn() {
+export default function LogIn() {
 	const classes = useStyles();
 
 	return (
@@ -83,6 +88,7 @@ export default function SignIn() {
 						control={<Checkbox value="remember" color="primary"/>}
 						label="Remember me"
 					/>
+					<NavLink to="/comment">
 					<Button
 						type="submit"
 						fullWidth
@@ -92,6 +98,7 @@ export default function SignIn() {
 					>
 						Log In
 					</Button>
+					</NavLink>
 				</form>
 			</div>
 			<Box mt={8}>
